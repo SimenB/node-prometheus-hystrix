@@ -1,0 +1,46 @@
+{
+  "name": "prometheus-hystrix",
+  "version": "0.0.0",
+  "description": "Expose Hystrix stream as Prometheus data",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "compile": "babel hystrix-stream.js -o index.js",
+    "lint": "eslint .",
+    "prepublish": "not-in-install && npm run compile || in-install",
+    "postpublish": "git push --follow-tags",
+    "pretest": "npm run lint",
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [
+    "hystrix",
+    "circuit-break",
+    "fallback",
+    "metrics",
+    "prometheus",
+    "prom",
+    "statsd"
+  ],
+  "author": "Simen Bekkhus <sbekkhus91@gmail.com>",
+  "license": "MIT",
+  "repository": "SimenB/node-prometheus-hystrix",
+  "dependencies": {
+    "rx-node": "^1.0.2",
+    "rxjs": "^5.0.0-beta.12"
+  },
+  "peerDependencies": {
+    "prom-client": ">= 3.2 <6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "eslint": "^3.7.1",
+    "eslint-config-simenb-base": "^4.0.0",
+    "in-publish": "^2.0.0",
+    "prom-client": "^5.0.2"
+  }
+}
