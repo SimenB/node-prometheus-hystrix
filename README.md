@@ -25,7 +25,7 @@ import { getGlobalStats } from 'brakes';
 import prometheusHystrix from 'prometheus-hystrix';
 import prometheusRegister from 'prom-client/lib/register';
 
-prometheusHystrix(getGlobalStats());
+prometheusHystrix(getGlobalStats().getHystrixStream());
 
 setInterval(() => {
   console.log(prometheusRegister.metrics());
