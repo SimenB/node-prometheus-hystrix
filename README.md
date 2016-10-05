@@ -11,10 +11,26 @@
 
 ## Usage
 
-This module has a peer dependency on [`prom-client`]([prom-client-url]). Currently, version 3-5 are supported.
+This module has a peer dependency on [`prom-client`][prom-client-url]. Currently, version 3-5 are supported.
 
-This module exports a single function, taking a [`Stream`]([node-stream-api-url]) of [Hystrix data]([hystrix-data-stream-url]), and
-returning a [`Subscription`]([rxjs-url]) of the same data, which can be unsubscribed if you so which.
+This module exports a single function, taking a [`Stream`][node-stream-api-url] of [Hystrix data][hystrix-data-stream-url], and
+returning a [`Subscription`][rxjs-url] of the same data, which can be unsubscribed if you so which.
+
+## Where to get Hystrix data
+
+[brakes][brakes-url] exposes Hystrix data as a stream.
+
+```js
+import { getGlobalStats } from 'brakes';
+import prometheusHystrix from 'prometheus-hystrix';
+import prometheusRegister from 'prom-client/lib/register';
+
+prometheusHystrix(getGlobalStats());
+
+setInterval(() => {
+  console.log(prometheusRegister.metrics());
+}, 500)
+```
 
 ## Metrics exposed
 
@@ -60,3 +76,4 @@ There are currently no metrics for the calculated percentiles `latencyExecute` a
 [node-stream-api-url]: https://nodejs.org/api/stream.html
 [hystrix-data-stream-url]: https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-metrics-event-stream
 [rxjs-url]: https://github.com/ReactiveX/rxjs
+[brakes-url]: https://github.com/awolden/brakes
