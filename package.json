@@ -12,7 +12,7 @@
     "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
-    "test": "echo \"No tests specified\""
+    "test": "ava"
   },
   "keywords": [
     "hystrix",
@@ -34,13 +34,20 @@
     "prom-client": ">= 3.2 <6"
   },
   "devDependencies": {
+    "ava": "^0.16.0",
     "babel-cli": "^6.16.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-3": "^6.17.0",
     "eslint": "^3.7.1",
+    "eslint-config-simenb-ava": "^3.0.0",
     "eslint-config-simenb-base": "^4.0.0",
     "in-publish": "^2.0.0",
     "prom-client": "^5.0.2"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
   }
 }
