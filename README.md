@@ -5,9 +5,9 @@
 [![Build Status][travis-image]][travis-url]
 
 [![Dependency Status][david-image]][david-url]
-[![Optional Dependency Status][david-optional-image]][david-optional-url]
 [![Peer Dependency Status][david-peer-image]][david-peer-url]
 [![Dev Dependency Status][david-dev-image]][david-dev-url]
+[![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 ## Usage
 
@@ -66,12 +66,12 @@ There are currently no metrics for the calculated percentiles `latencyExecute` a
 [npm-image]: https://img.shields.io/npm/v/prometheus-hystrix.svg
 [david-url]: https://david-dm.org/SimenB/node-prometheus-hystrix
 [david-image]: https://img.shields.io/david/SimenB/node-prometheus-hystrix.svg
-[david-dev-url]: https://david-dm.org/SimenB/node-prometheus-hystrix#info=devDependencies
+[david-dev-url]: https://david-dm.org/SimenB/node-prometheus-hystrix?type=dev
 [david-dev-image]: https://img.shields.io/david/dev/SimenB/node-prometheus-hystrix.svg
-[david-peer-url]: https://david-dm.org/SimenB/node-prometheus-hystrix#info=peerDependencies
+[david-peer-url]: https://david-dm.org/SimenB/node-prometheus-hystrix?type=peer
 [david-peer-image]: https://img.shields.io/david/peer/SimenB/node-prometheus-hystrix.svg
-[david-optional-url]: https://david-dm.org/SimenB/node-prometheus-hystrix#info=optionalDependencies
-[david-optional-image]: https://img.shields.io/david/optional/SimenB/node-prometheus-hystrix.svg
+[greenkeeper-url]: https://greenkeeper.io/
+[greenkeeper-image]: https://badges.greenkeeper.io/SimenB/node-prometheus-hystrix.svg
 [prom-client-url]: https://github.com/siimon/prom-client
 [node-stream-api-url]: https://nodejs.org/api/stream.html
 [hystrix-data-stream-url]: https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-metrics-event-stream
