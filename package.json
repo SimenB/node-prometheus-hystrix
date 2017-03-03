@@ -38,8 +38,9 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-3": "^6.17.0",
     "eslint": "^3.9.1",
-    "eslint-config-simenb-base": "^10.0.0",
+    "eslint-config-simenb-base": "^11.0.1",
     "in-publish": "^2.0.0",
+    "prettier": "^0.21.0",
     "prom-client": "^7.0.0"
   }
 }
