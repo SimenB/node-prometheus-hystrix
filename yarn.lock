@@ -1947,9 +1947,9 @@ progress@^1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/progress/-/progress-1.1.8.tgz#e260c78f6161cdd9b0e56cc3e0a85de17c7a57be"
 
-prom-client@^7.0.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-7.1.0.tgz#c82f50e48c8b5ff0f500cd076c7203a454a7feaa"
+prom-client@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-8.0.0.tgz#e34da83c69aecad14be05c4dc9ebb0811c9461bd"
   dependencies:
     tdigest "^0.1.1"
     util-extend "^1.0.1"
