@@ -1,4 +1,6 @@
 # prometheus-hystrix
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/SimenB/node-prometheus-hystrix.svg)](https://greenkeeper.io/)
 > Expose Hystrix stream as Prometheus data
 
 [![NPM Version][npm-image]][npm-url]
