@@ -30,7 +30,7 @@
     "rx-node": "^1.0.2"
   },
   "peerDependencies": {
-    "prom-client": ">= 3.2 <10"
+    "prom-client": ">=10.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
