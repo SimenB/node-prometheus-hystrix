@@ -7,9 +7,7 @@
     "index.js"
   ],
   "scripts": {
-    "compile": "babel hystrix-stream.js -o index.js",
     "lint": "eslint .",
-    "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
     "test": "echo \"No tests specified\""
@@ -30,17 +28,16 @@
     "rx-node": "^1.0.2"
   },
   "peerDependencies": {
-    "prom-client": ">= 3.2 <10"
+    "prom-client": ">=10 <11"
+  },
+  "engines": {
+    "node": ">=4"
   },
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.2.0",
-    "babel-preset-stage-3": "^6.17.0",
     "eslint": "^3.9.1",
     "eslint-config-simenb-base": "^12.0.0",
-    "in-publish": "^2.0.0",
+    "eslint-config-simenb-node": "^0.4.9",
     "prettier": "^1.0.2",
-    "prom-client": "^9.0.0"
+    "prom-client": "^10.0.1"
   }
 }
