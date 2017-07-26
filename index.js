@@ -90,31 +90,54 @@ const latencyTotalMean = new Gauge({
 });
 
 module.exports = stream =>
-  fromStream(stream).map(data => data.replace(/^data: /, '')).map(JSON.parse).subscribe(data => {
-    const name = data.name;
+  fromStream(stream)
+    .map(data => data.replace(/^data: /, ''))
+    .map(JSON.parse)
+    .subscribe(data => {
+      const name = data.name;
 
-    errorCount.labels(name).set(data.errorCount);
-    requestCount.labels(name).set(data.requestCount);
+      errorCount.labels(name).set(data.errorCount);
+      requestCount.labels(name).set(data.requestCount);
 
-    rollingCountCollapsedRequests.labels(name).set(data.rollingCountCollapsedRequests);
-    rollingCountExceptionsThrown.labels(name).set(data.rollingCountExceptionsThrown);
-    rollingCountFailure.labels(name).set(data.rollingCountFailure);
-    rollingCountFallbackFailure.labels(name).set(data.rollingCountFallbackFailure);
-    rollingCountFallbackRejection.labels(name).set(data.rollingCountFallbackRejection);
-    rollingCountFallbackSuccess.labels(name).set(data.rollingCountFallbackSuccess);
-    rollingCountResponsesFromCache.labels(name).set(data.rollingCountResponsesFromCache);
-    rollingCountSemaphoreRejected.labels(name).set(data.rollingCountSemaphoreRejected);
-    rollingCountShortCircuited.labels(name).set(data.rollingCountShortCircuited);
-    rollingCountSuccess.labels(name).set(data.rollingCountSuccess);
-    rollingCountThreadPoolRejected.labels(name).set(data.rollingCountThreadPoolRejected);
-    rollingCountTimeout.labels(name).set(data.rollingCountTimeout);
+      rollingCountCollapsedRequests
+        .labels(name)
+        .set(data.rollingCountCollapsedRequests);
+      rollingCountExceptionsThrown
+        .labels(name)
+        .set(data.rollingCountExceptionsThrown);
+      rollingCountFailure.labels(name).set(data.rollingCountFailure);
+      rollingCountFallbackFailure
+        .labels(name)
+        .set(data.rollingCountFallbackFailure);
+      rollingCountFallbackRejection
+        .labels(name)
+        .set(data.rollingCountFallbackRejection);
+      rollingCountFallbackSuccess
+        .labels(name)
+        .set(data.rollingCountFallbackSuccess);
+      rollingCountResponsesFromCache
+        .labels(name)
+        .set(data.rollingCountResponsesFromCache);
+      rollingCountSemaphoreRejected
+        .labels(name)
+        .set(data.rollingCountSemaphoreRejected);
+      rollingCountShortCircuited
+        .labels(name)
+        .set(data.rollingCountShortCircuited);
+      rollingCountSuccess.labels(name).set(data.rollingCountSuccess);
+      rollingCountThreadPoolRejected
+        .labels(name)
+        .set(data.rollingCountThreadPoolRejected);
+      rollingCountTimeout.labels(name).set(data.rollingCountTimeout);
 
-    currentConcurrentExecutionCount.labels(name).set(data.currentConcurrentExecutionCount);
+      currentConcurrentExecutionCount
+        .labels(name)
+        .set(data.currentConcurrentExecutionCount);
 
-    latencyExecuteMean.labels(name).set(data.latencyExecute_mean);
+      latencyExecuteMean.labels(name).set(data.latencyExecute_mean);
 
-    latencyTotalMean.labels(name).set(data.latencyTotal_mean);
-  });
+      latencyTotalMean.labels(name).set(data.latencyTotal_mean);
+    });
 
 // Missing data:
 /*
