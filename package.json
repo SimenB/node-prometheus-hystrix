@@ -28,7 +28,7 @@
     "rx-node": "^1.0.2"
   },
   "peerDependencies": {
-    "prom-client": ">=10 <11"
+    "prom-client": ">=10 <12"
   },
   "engines": {
     "node": ">=4"
