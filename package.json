@@ -38,6 +38,6 @@
     "eslint-config-simenb-base": "^14.0.0",
     "eslint-config-simenb-node": "^0.4.9",
     "prettier": "^1.0.2",
-    "prom-client": "^10.0.1"
+    "prom-client": "^11.1.0"
   }
 }
