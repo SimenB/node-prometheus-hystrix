@@ -1,4 +1,5 @@
 # prometheus-hystrix
+
 > Expose Hystrix stream as Prometheus data
 
 [![NPM Version][npm-image]][npm-url]
@@ -29,7 +30,7 @@ prometheusHystrix(getGlobalStats().getHystrixStream());
 
 setInterval(() => {
   console.log(prometheusRegister.metrics());
-}, 500)
+}, 500);
 ```
 
 ## Metrics exposed
@@ -54,11 +55,9 @@ This module exposes 17 metrics, all using the name of the `HystrixCommand` as th
 16. `hystrix_latency_execute_mean`: Mean latency of all executions.
 17. `hystrix_latency_total_mean`: Mean latency of all requests.
 
-
 ## TODO
 
 There are currently no metrics for the calculated percentiles `latencyExecute` and `latencyTotal`.
-
 
 [travis-url]: https://travis-ci.org/SimenB/node-prometheus-hystrix
 [travis-image]: https://img.shields.io/travis/SimenB/node-prometheus-hystrix.svg
