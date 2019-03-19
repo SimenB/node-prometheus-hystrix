@@ -1,6 +1,6 @@
 {
   "name": "prometheus-hystrix",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Expose Hystrix stream as Prometheus data",
   "main": "index.js",
   "files": [
