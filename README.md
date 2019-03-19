@@ -37,23 +37,28 @@ setInterval(() => {
 
 This module exposes 17 metrics, all using the name of the `HystrixCommand` as the label:
 
-1. `hystrix_errors_total`: Total number of times the breaker has errored
-2. `hystrix_requests_total`: Total number of requests made to the breaker
-3. `hystrix_collapsed_requests_total`: Total number of times a requests has been collapsed.
-4. `hystrix_exceptions_thrown_total`: Total number of times an exception has been thrown.
-5. `hystrix_failures_total`: Total number of times a call has failed.
-6. `hystrix_fallback_failures_total`: Total number of times a fallback has failed.
-7. `hystrix_fallback_rejections_total`: Total number of times a fallback has rejected.
-8. `hystrix_fallback_successes_total`: Total number of times a fallback has been successful.
-9. `hystrix_responses_from_cache_total`: Total number of times a response has been returned from the cache.
-10. `hystrix_semaphore_rejections_total`: Total number of times a request failed because of empty semaphore.
-11. `hystrix_short_circuits_total`: Total number of times a request short circuited.
-12. `hystrix_successes_total`: Total number of times a request succeeded.
-13. `hystrix_thread_pool_rejections_total`: Total number of times a the thread pool rejected.
-14. `hystrix_timeouts_total`: Total number of times a request timed out.
-15. `hystrix_current_concurrent_executions_total`: Total number of requests going concurrently.
+1. `hystrix_errors_total`: Rolling number of times the breaker has errored
+2. `hystrix_requests_total`: Rolling number of requests made to the breaker
+3. `hystrix_collapsed_requests_total`: Rolling number of times a requests has been collapsed.
+4. `hystrix_exceptions_thrown_total`: Rolling number of times an exception has been thrown.
+5. `hystrix_failures_total`: Rolling number of times a call has failed.
+6. `hystrix_fallback_failures_total`: Rolling number of times a fallback has failed.
+7. `hystrix_fallback_rejections_total`: Rolling number of times a fallback has rejected.
+8. `hystrix_fallback_successes_total`: Rolling number of times a fallback has been successful.
+9. `hystrix_responses_from_cache_total`: Rolling number of times a response has been returned from the cache.
+10. `hystrix_semaphore_rejections_total`: Rolling number of times a request failed because of empty semaphore.
+11. `hystrix_short_circuits_total`: Rolling number of times a request short circuited.
+12. `hystrix_successes_total`: Rolling number of times a request succeeded.
+13. `hystrix_thread_pool_rejections_total`: Rolling number of times a the thread pool rejected.
+14. `hystrix_timeouts_total`: Rolling number of times a request timed out.
+15. `hystrix_current_concurrent_executions_total`: Rolling number of requests going concurrently.
 16. `hystrix_latency_execute_mean`: Mean latency of all executions.
 17. `hystrix_latency_total_mean`: Mean latency of all requests.
+18. `hystrix_timeouts_total_counter`: Total number of times a request timed out.
+19. `hystrix_requests_total_counter`: Total number of requests made to the breaker
+20. `hystrix_failures_total_counter`: Total number of times a call has failed.
+21. `hystrix_short_circuits_total_counter`: Total number of times a request short circuited.
+22. `hystrix_successes_total_counter`: Total number of times a request succeeded.
 
 ## TODO
 

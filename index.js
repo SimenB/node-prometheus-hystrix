@@ -2,80 +2,81 @@
 
 const fromStream = require('rx-node').fromStream;
 const Gauge = require('prom-client').Gauge;
+const Counter = require('prom-client').Counter;
 
 const errorCount = new Gauge({
   name: 'hystrix_errors_total',
-  help: 'Total number of times the breaker has errored.',
+  help: 'Rolling number of times the breaker has errored.',
   labelNames: ['breakerName'],
 });
 const requestCount = new Gauge({
   name: 'hystrix_requests_total',
-  help: 'Total number of requests made to the breaker',
+  help: 'Rolling number of requests made to the breaker',
   labelNames: ['breakerName'],
 });
 const rollingCountCollapsedRequests = new Gauge({
   name: 'hystrix_collapsed_requests_total',
-  help: 'Total number of times a requests has been collapsed.',
+  help: 'Rolling number of times a requests has been collapsed.',
   labelNames: ['breakerName'],
 });
 const rollingCountExceptionsThrown = new Gauge({
   name: 'hystrix_exceptions_thrown_total',
-  help: 'Total number of times an exception has been thrown.',
+  help: 'Rolling number of times an exception has been thrown.',
   labelNames: ['breakerName'],
 });
 const rollingCountFailure = new Gauge({
   name: 'hystrix_failures_total',
-  help: 'Total number of times a call has failed.',
+  help: 'Rolling number of times a call has failed.',
   labelNames: ['breakerName'],
 });
 const rollingCountFallbackFailure = new Gauge({
   name: 'hystrix_fallback_failures_total',
-  help: 'Total number of times a fallback has failed.',
+  help: 'Rolling number of times a fallback has failed.',
   labelNames: ['breakerName'],
 });
 const rollingCountFallbackRejection = new Gauge({
   name: 'hystrix_fallback_rejections_total',
-  help: 'Total number of times a fallback has rejected.',
+  help: 'Rolling number of times a fallback has rejected.',
   labelNames: ['breakerName'],
 });
 const rollingCountFallbackSuccess = new Gauge({
   name: 'hystrix_fallback_successes_total',
-  help: 'Total number of times a fallback has been successful.',
+  help: 'Rolling number of times a fallback has been successful.',
   labelNames: ['breakerName'],
 });
 const rollingCountResponsesFromCache = new Gauge({
   name: 'hystrix_responses_from_cache_total',
-  help: 'Total number of times a response has been returned from the cache.',
+  help: 'Rolling number of times a response has been returned from the cache.',
   labelNames: ['breakerName'],
 });
 const rollingCountSemaphoreRejected = new Gauge({
   name: 'hystrix_semaphore_rejections_total',
-  help: 'Total number of times a request failed because of empty semaphore.',
+  help: 'Rolling number of times a request failed because of empty semaphore.',
   labelNames: ['breakerName'],
 });
 const rollingCountShortCircuited = new Gauge({
   name: 'hystrix_short_circuits_total',
-  help: 'Total number of times a request short circuited.',
+  help: 'Rolling number of times a request short circuited.',
   labelNames: ['breakerName'],
 });
 const rollingCountSuccess = new Gauge({
   name: 'hystrix_successes_total',
-  help: 'Total number of times a request succeeded.',
+  help: 'Rolling number of times a request succeeded.',
   labelNames: ['breakerName'],
 });
 const rollingCountThreadPoolRejected = new Gauge({
   name: 'hystrix_thread_pool_rejections_total',
-  help: 'Total number of times a the thread pool rejected.',
+  help: 'Rolling number of times a the thread pool rejected.',
   labelNames: ['breakerName'],
 });
 const rollingCountTimeout = new Gauge({
   name: 'hystrix_timeouts_total',
-  help: 'Total number of times a request timed out.',
+  help: 'Rolling number of times a request timed out.',
   labelNames: ['breakerName'],
 });
 const currentConcurrentExecutionCount = new Gauge({
   name: 'hystrix_current_concurrent_executions_total',
-  help: 'Total number of requests going concurrently.',
+  help: 'Rolling number of requests going concurrently.',
   labelNames: ['breakerName'],
 });
 const latencyExecuteMean = new Gauge({
@@ -86,6 +87,31 @@ const latencyExecuteMean = new Gauge({
 const latencyTotalMean = new Gauge({
   name: 'hystrix_latency_total_mean',
   help: 'Mean latency of all requests.',
+  labelNames: ['breakerName'],
+});
+const cummulativeCountTimeout = new Counter({
+  name: 'hystrix_timeouts_total_counter',
+  help: 'Total number of times a request timed out.',
+  labelNames: ['breakerName'],
+});
+const cummulativeRequestCount = new Counter({
+  name: 'hystrix_requests_total_counter',
+  help: 'Total number of requests made to the breaker',
+  labelNames: ['breakerName'],
+});
+const cummulativeCountFailure = new Counter({
+  name: 'hystrix_failures_total_counter',
+  help: 'Total number of times a call has failed.',
+  labelNames: ['breakerName'],
+});
+const cummulativeCountShortCircuited = new Counter({
+  name: 'hystrix_short_circuits_total_counter',
+  help: 'Total number of times a request short circuited.',
+  labelNames: ['breakerName'],
+});
+const cummulativeCountSuccess = new Counter({
+  name: 'hystrix_successes_total_counter',
+  help: 'Total number of times a request succeeded.',
   labelNames: ['breakerName'],
 });
 
@@ -129,10 +155,18 @@ module.exports = stream =>
         .labels(name)
         .set(data.rollingCountThreadPoolRejected);
       rollingCountTimeout.labels(name).set(data.rollingCountTimeout);
-
       currentConcurrentExecutionCount
         .labels(name)
         .set(data.currentConcurrentExecutionCount);
+
+      // Requires brakes version 2.7.0 +
+      cummulativeCountTimeout.labels(name).inc(data.countTimeoutDeriv || 0);
+      cummulativeRequestCount.labels(name).inc(data.countTotalDeriv || 0);
+      cummulativeCountFailure.labels(name).inc(data.countFailureDeriv || 0);
+      cummulativeCountShortCircuited
+        .labels(name)
+        .inc(data.countShortCircuitedDeriv || 0);
+      cummulativeCountSuccess.labels(name).inc(data.countSuccessDeriv || 0);
 
       latencyExecuteMean.labels(name).set(data.latencyExecute_mean);
 
