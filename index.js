@@ -155,11 +155,11 @@ module.exports = stream =>
         .labels(name)
         .set(data.rollingCountThreadPoolRejected);
       rollingCountTimeout.labels(name).set(data.rollingCountTimeout);
-
-      // Requires brakes version 2.7.0 +
       currentConcurrentExecutionCount
         .labels(name)
-        .set(data.currentConcurrentExecutionCount || 0);
+        .set(data.currentConcurrentExecutionCount);
+
+      // Requires brakes version 2.7.0 +
       cummulativeCountTimeout.labels(name).inc(data.countTimeoutDeriv || 0);
       cummulativeRequestCount.labels(name).inc(data.countTotalDeriv || 0);
       cummulativeCountFailure.labels(name).inc(data.countFailureDeriv || 0);
