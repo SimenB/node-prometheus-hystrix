@@ -1,6 +1,6 @@
 {
   "name": "prometheus-hystrix",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Expose Hystrix stream as Prometheus data",
   "main": "index.js",
   "files": [
@@ -28,7 +28,7 @@
     "rx-node": "^1.0.2"
   },
   "peerDependencies": {
-    "prom-client": ">=10 <12"
+    "prom-client": ">=10"
   },
   "engines": {
     "node": ">=4"
@@ -38,6 +38,6 @@
     "eslint-config-simenb-base": "^15.0.0",
     "eslint-config-simenb-node": "^2.0.0",
     "prettier": "^1.0.2",
-    "prom-client": "^11.1.1"
+    "prom-client": "^14.0.1"
   }
 }

@@ -5,17 +5,14 @@
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 
-[![Dependency Status][david-image]][david-url]
-[![Peer Dependency Status][david-peer-image]][david-peer-url]
-[![Dev Dependency Status][david-dev-image]][david-dev-url]
 [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 ## Usage
 
-This module has a peer dependency on [`prom-client`][prom-client-url]. Currently, version 3-5 are supported.
+This module has a peer dependency on [`prom-client`][prom-client-url]. Currently, version 10-14 are supported.
 
 This module exports a single function, taking a [`Stream`][node-stream-api-url] of [Hystrix data][hystrix-data-stream-url], and
-returning a [`Subscription`][rxjs-url] of the same data, which can be unsubscribed if you so which.
+returning a [`Subscription`][rxjs-url] of the same data, which can be unsubscribed if you so wish.
 
 ## Where to get Hystrix data
 
